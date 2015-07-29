@@ -1,0 +1,61 @@
+
+public class spells{
+
+	mana playerMana = new mana();
+	public void spellHeal(){
+		if (stats.playerClass.equals("cleric")){
+			if (mana.mp>=5){
+				playerMana.loseMana(5);
+				lives.lp+=intellect.intel;
+				playerMana.displayMana();
+			}
+			else{
+				System.out.println("Not enough Mana");
+			}
+			battle.combatEnemyAttack();
+		}
+		else{
+			System.out.println("Spell not available to your class.");
+			battle.combatAttackPhase();
+		}		
+	}
+	
+	public void spellFireball(){
+		
+		if(stats.playerClass.equals("mage")){
+			if(mana.mp>=6){
+				playerMana.loseMana(9);
+				playerMana.displayMana();
+				enemy.enemyLoseHealth(intellect.intel);
+			}
+			else{
+				System.out.println("Not enough Mana");
+			}
+			battle.combatEnemyAttack();
+		}
+		else{
+			System.out.println("Spell not available to your class.");
+			battle.combatAttackPhase();
+		}
+	}
+	
+	
+	public void spellIceLance(){
+		if(stats.playerClass.equals("mage")){
+			if (mana.mp>=9){
+				playerMana.loseMana(9);
+				playerMana.displayMana();
+				enemy.enemyLoseHealth(intellect.intel);
+				System.out.println("Enemy frozen, turn skipped");
+			}
+			else{
+				System.out.println("Not enough Mana");
+			}
+		}
+		else{
+			System.out.println("Spell not available to your class.");
+			battle.combatAttackPhase();
+		}		
+	}
+	
+}
